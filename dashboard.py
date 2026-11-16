@@ -132,7 +132,7 @@ st.markdown("---")
 # -------------------------------------------------------------
 # 4. GRAFIK 1: TREN PENDAPATAN BULANAN
 # -------------------------------------------------------------
-st.subheader("1. Analisis Pendapatan Bulanan")
+st.subheader("1. Tren Pendapatan Bulanan (2018)")
 
 main_df['month_year'] = main_df['order_purchase_timestamp'].dt.to_period('M')
 monthly_revenue = pd.merge(filtered_order_items, main_df[['order_id', 'month_year']], on='order_id', how='inner')
