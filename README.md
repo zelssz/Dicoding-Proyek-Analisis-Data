@@ -37,7 +37,7 @@ pip install -r dashboard/requirements.txt
 
 ## Running Dashboard
 
-streamlit run dashboard/dashboard.py
+streamlit run dashboard.py
 
 ## Live Dashboard URL
 Anda dapat mengakses dashboard yang telah dideploy secara publik melalui tautan berikut: https://ecommerce-public-dash.streamlit.app/
