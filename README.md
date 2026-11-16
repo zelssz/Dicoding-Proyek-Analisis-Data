@@ -21,7 +21,7 @@ source env/bin/activate  # Untuk Linux/Mac
 .\env\Scripts\activate   # Untuk Windows
 
 # Instalasi Dependencies
-pip install -r dashboard/requirements.txt
+pip install -r requirements.txt
 
 ```
 
@@ -32,12 +32,12 @@ conda create --name ecommerce-project python=3.9
 conda activate ecommerce-project
 
 # Instalasi Dependencies
-pip install -r dashboard/requirements.txt
+pip install -r requirements.txt
 ```
 
 ## Running Dashboard
 
-streamlit run dashboard.py
+streamlit run dashboard/dashboard.py
 
 ## Live Dashboard URL
 Anda dapat mengakses dashboard yang telah dideploy secara publik melalui tautan berikut: https://ecommerce-public-dash.streamlit.app/
