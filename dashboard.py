@@ -56,9 +56,14 @@ products_df = main_df_raw[['product_id', 'product_category_name', 'product_name_
 category_df = main_df_raw[['product_category_name', 'product_category_name_english']].drop_duplicates()
 
 # -------------------------------------------------------------
+# -------------------------------------------------------------
 # 2. SIDEBAR & FILTER TANGGAL 
 # -------------------------------------------------------------
 with st.sidebar:
+    col_l1, col_l2, col_l3 = st.columns([1, 2, 1])
+    with col_l2:
+        st.image("https://img.icons8.com/ios-filled/100/ffffff/combo-chart.png", width=75)
+    
     st.markdown("<h3 style='text-align: center;'>E-Commerce Dashboard</h3>", unsafe_allow_html=True)
     st.markdown("---")
     st.markdown("**Filter Data**")
@@ -142,7 +147,7 @@ ax.plot(
     linewidth=2,
     color='#1f77b4'
 )
-ax.set_title("Tren Pendapatan Bulanan Tahun 2018 (Januari - Agustus", fontsize=12, fontweight='bold', pad=12)
+ax.set_title("Tren Pendapatan Bulanan Tahun 2018 (Januari - Agustus)", fontsize=12, fontweight='bold', pad=12)
 ax.set_xlabel("Bulan", fontsize=10)
 ax.set_ylabel("Pendapatan ($ Ribuan)", fontsize=10)
 plt.xticks(rotation=45)
