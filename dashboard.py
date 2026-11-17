@@ -133,15 +133,17 @@ st.markdown("---")
 # -------------------------------------------------------------
 st.subheader("1. Tren Pendapatan Bulanan (Januari - Agustus 2018)")
 
-# Filter khusus rentang Januari 2018 s.d. Agustus 2018 sesuai Colab
-monthly_orders_q1 = main_df[
-    (main_df['order_purchase_timestamp'] >= '2018-01-01') & 
-    (main_df['order_purchase_timestamp'] <= '2018-08-31')
+# Mengambil data orders langsung untuk rentang Jan-Ags 2018 secara independen
+orders_q1_raw = orders_df[
+    (orders_df['order_purchase_timestamp'] >= '2018-01-01') & 
+    (orders_df['order_purchase_timestamp'] <= '2018-08-31')
 ].copy()
 
-monthly_orders_q1['order_month'] = monthly_orders_q1['order_purchase_timestamp'].dt.strftime('%Y-%m')
-monthly_rev_items = pd.merge(order_items_df, monthly_orders_q1[['order_id', 'order_month']], on='order_id', how='inner')
-monthly_revenue_q1 = monthly_rev_items.groupby('order_month')['price'].sum().reset_index()
+orders_q1_raw['order_month'] = orders_q1_raw['order_purchase_timestamp'].dt.strftime('%Y-%m')
+
+# Gabungkan dengan order_items untuk menghitung total revenue (harga barang + freight atau price saja sesuai Colab)
+rev_q1_items = pd.merge(order_items_df, orders_q1_raw[['order_id', 'order_month']], on='order_id', how='inner')
+monthly_revenue_q1 = rev_q1_items.groupby('order_month')['price'].sum().reset_index()
 monthly_revenue_q1.rename(columns={'price': 'total_revenue'}, inplace=True)
 
 fig, ax = plt.subplots(figsize=(12, 5))
